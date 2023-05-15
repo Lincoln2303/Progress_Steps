@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+/* I.10. We're adding ::root: */
+/* NOTE: Technically here I can save something to a variable and use that variable below */
+/* AFTER: We add this variables, instead of colors below (I.11.)  */
+:root {
+    /* NOTE: We set the colors here with the variables */
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f7fb;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* NOTE: We use "overflow" on hidden, because we don't want scroll bars to be shown by default */
+    /* overflow: hidden; */
+    margin: 0;
+}
+
+/* I.04. We're adding styles to the .container: */
+.container {
+    /* NOTE: This will align the numbers  */
+    text-align: center;
+}
+
+/* I.05. Then comes the .progress-container */
+.progress-container {
+    /* NOTE:  */
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+/* I.07. Adding the styles for the grey line (background line):  (NOTE: Same code as progress) */
+/* AFTER: We're styling the circles below (I.08.) */
+.progress-container::before  {
+    /* NOTE: When we use ::before we have to add "content" (and just set it to an empty string)*/
+    content: '';
+    /* background-color: #e0e0e0; */
+    /* I.11. We're updating background-color with the :root variable */
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    /* NOTE: We change the width to be 100% */
+    width: 100%; 
+    z-index: -1;
+ }
+
+/* I.06. Then we style the "progress line": */
+/* AFTER: We're going to copy the style and add it above to .progress-container::before (I.07.)*/
+.progress {
+    /* background-color: #3498db; */
+    /* I.11. We're updating background-color with the :root variable */
+    background-color: var(--line-border-fill);
+    /* NOTE: We want to position it absolute with the progress container (which is relative) */
+    position: absolute;
+    top: 50%;
+    left: 0;
+    /* NOTE: By using trasnform we can position it vertically */
+    transform: translateY(-50%);
+    height: 4px;
+    width:  0%; 
+    /* NOTE: We set z-index to make sure it's going to be behind the circles (you can see it goes behind the numbers) */
+    z-index: -1;
+    /* NOTE: We want a transition on the line => when we click on buttons we want the line to transition in a duration!  */
+    transition: 0.4s ease;
+}
+
+/* I.08. Styling circles: */
+.circle {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    /* NOTE: For centering the numbers we're using flex */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* NOTE: We're adding a border (so we will see the line) */
+    border: 3px solid var(--line-border-empty);
+    /* NOTE: We have to add a transition, if the blue line changes */
+    transition: .4s ease; 
+}
+
+/* I.09. Then we do the active class: */
+/* AFTER: We're adding a custom property at the top :root (I.10.) */
+.circle.active {
+    /* border-color: #3498db; */
+    /* I.11. We're updating background-color with the :root variable */
+    border-color: var(--line-border-fill);
+}
+
+/* I.12. Then we're styling the buttons: */
+.btn {
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px ;
+}
+
+/* I.13. We style the btn active class: */
+.btn:active {
+    /* NOTE: You can test how is the difference with setting the number */
+    transform: scale(0.98);
+}
+
+/* I.14. Styling btn:focus: */
+.btn:focus {
+    outline: 0;
+}
+
+/* I.15. Styling the disabled button: */
+/* AFTER: We're moving to javascript part in the next section (section II.) */
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    /* NOTE: We also set the cursor to none */
+    cursor: not-allowed ;
+}
+
+
+
+
+
