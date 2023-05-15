@@ -28,7 +28,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
-- The project is part of the "50 projects in 50 days - HTML, CSS & Javascript" course on Udemy by Brad Traversy.
+The project is part of the "50 projects in 50 days - HTML, CSS & Javascript" course on Udemy by Brad Traversy.
 
 ## Contributing
 
